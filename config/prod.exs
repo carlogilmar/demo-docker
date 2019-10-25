@@ -11,7 +11,7 @@ use Mix.Config
 # before starting your production server.
 config :demo, DemoWeb.Endpoint,
   http: [:inet6, port: System.get_env("PORT") || 4000],
-  url: [host: "example.com", port: 80],
+  url: [host: Application.get_env(:demo, :app_hostname), port: Application.get_env(:demo, :app_port)],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -61,7 +61,7 @@ config :logger, level: :info
 # Alternatively, you can configure exactly which server to
 # start per endpoint:
 #
-#     config :demo, DemoWeb.Endpoint, server: true
+     config :demo, DemoWeb.Endpoint, server: true
 #
 # Note you can't rely on `System.get_env/1` when using releases.
 # See the releases documentation accordingly.
